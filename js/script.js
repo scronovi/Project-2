@@ -29,47 +29,39 @@ const showPage = (list, page) => {
    Create the `appendPageLinks function` to generate, append, and add
    functionality to the pagination buttons.
 ***/
-
-
 const appendPageLinks = (list) => {
-   const page = document.querySelector('.page')
-   const paginationDiv = document.createElement('div');
-   const paginationUl = document.createElement('ul');
+   let amountOfPages = list.length / itemsPerPage;
 
-   page.appendChild(paginationDiv);
-   paginationDiv.appendChild(paginationUl);
-   for (let i = 0; i < 5; i += 1){
-      const paginationLi = document.createElement('li');
-      const paginationA = document.createElement('a');
-      paginationA.href = '#';
-      paginationA.textContent = (i + 1);
+   const page = document.querySelector('.page');
 
-      paginationUl.appendChild(paginationLi);
-      paginationLi.appendChild(paginationA);
+   const div = document.createElement('div');
+   div.className = 'pagination';
+   const ul = document.createElement('ul');
+
+   page.appendChild(div);
+   div.appendChild(ul);
+
+   for (let i = 0; i < amountOfPages; i += 1){
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      ul.appendChild(li);
+      li.appendChild(a);
+      a.href = '#';
+      a.textContent = i + 1;
+
+      if (i === 0) {
+         a.className = 'active';
+      }
+      a.addEventListener('click', function(){
+         let linksTag = document.getElementsByTagName('a');
+         for (let j = 0; j < amountOfPages; j += 1) {
+            let hyperLinks = linksTag[j];
+            hyperLinks.classList.remove('active');
+         }
+         event.target.className = 'active';
+         showPage(list, a.textContent);
+      });
    }
-/*
-   <div class="pagination">
-      <ul>
-         <li>
-            <a class="active" href="#">1</a>
-         </li>
-         <li>
-            <a href="#">2</a>
-         </li>
-         <li>
-            <a href="#">3</a>
-         </li>
-         <li>
-            <a href="#">4</a>
-         </li>
-         <li>
-            <a href="#">5</a>
-         </li>
-      </ul>
-   </div>
-*/
 }
+showPage(studentList, 1);
 appendPageLinks(studentList);
-
-
-
