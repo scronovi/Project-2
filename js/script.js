@@ -1,10 +1,8 @@
 /******************************************
+Tim Degerman
 Treehouse Techdegree:
 FSJS project 2 - List Filter and Pagination
 ******************************************/
-
-// Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
-
 
 /*
 Global variables
@@ -26,7 +24,7 @@ const showPage = (list, page) => {
 }
 
 /*
-Generate, append and adding functionality to the pagination buttons.
+Generating, appending and adding functionality to the pagination buttons.
 */
 
 const appendPageLinks = (list) => {
